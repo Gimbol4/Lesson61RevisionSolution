@@ -10,14 +10,16 @@
 
 #include "logic.h"
 
-void swap(int* x, int* y) {
-    int t = *x;
-    *x = *y;
-    *y = t;
+void swap_if(int* x, int* y) {
+    if (*x < *y) {
+        int t = *x;
+        *x = *y;
+        *y = t;
+    }
 }
 
 void sort(int* a, int* b, int* c) {
-    if (*a < *b) swap(a, b); 
-    if (*b < *c) swap(b, c); 
-    if (*a < *b) swap(a, b); 
+    swap_if(a, b); 
+    swap_if(b, c); 
+    swap_if(a, b); 
 }

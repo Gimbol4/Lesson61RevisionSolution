@@ -19,8 +19,6 @@ double calculate_arithmetical_mean_of_nonzero_elements(int* array, int size) {
 			count++;
 		}
 	}
-	if (summ == 0) {
-		return 0.0;
-	}
-	return summ / count;
+	
+	return count != 0 ? summ / count : 0;
 }
