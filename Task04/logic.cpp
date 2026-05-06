@@ -7,12 +7,13 @@
 #include "logic.h"
 
 double calculate_arithmetical_mean_of_nonextreme_elements(int* array, int size) {
-	if (size <= 0) {
+	if (size <= 2) {
 		return 0.0;
 	}
-	
-	int min = 0, max = 0;
-	int summ = 0, int count = 0;
+
+	int min = array[0], max = array[0];
+	double summ = 0;
+	double count = 0;
 
 	for (int i = 0; i < size; i++)
 	{
@@ -26,12 +27,18 @@ double calculate_arithmetical_mean_of_nonextreme_elements(int* array, int size) 
 			max = array[i];
 		}
 	}
-	for (int i = 0; i < size; i++)
-	{
+	if (max == min) {
+		return 0.0;
+	}
+
+	for (int i = 0; i < size; ++i) {
 		if (array[i] != min && array[i] != max) {
 			summ += array[i];
 			count++;
 		}
+	}
+	if (count == 0) {
+		return 0.0;
 	}
 	return summ / count;
 }
